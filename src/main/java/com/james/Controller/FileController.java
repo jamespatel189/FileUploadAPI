@@ -1,8 +1,7 @@
 package com.james.Controller;
 
-import com.james.Exception.InvalidInputId;
-import com.james.Service.FileService;
-import org.apache.tomcat.util.http.fileupload.FileUploadBase;
+import com.james.Exception.InvalidIdException;
+import com.james.Service.FileFileServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.james.Entity.File;
@@ -16,26 +15,26 @@ import java.util.List;
 public class FileController {
 
     @Autowired
-    private FileService fileService;
+    private FileFileServiceImpl fileServiceImpl;
 
     @GetMapping(value = "/{id}")
-    public File findById(@PathVariable("id") final int id) throws InvalidInputId {
-        if(fileService.findById(id) == null) throw  new InvalidInputId("Invalid Input Id");
-        return fileService.findById(id);
+    public File findById(@PathVariable("id") final int id) throws InvalidIdException {
+        if(fileServiceImpl.findById(id) == null) throw  new InvalidIdException("Invalid Input Id");
+        return fileServiceImpl.findById(id);
 
     }
 
     @GetMapping
     public List<File> findAll(){
 
-        return fileService.findAll();
+        return fileServiceImpl.findAll();
     }
 
 
     @PostMapping
     public File uploadFile(@RequestParam("file") MultipartFile file) throws IOException{
 
-        return fileService.uploadFile(file);
+        return fileServiceImpl.uploadFile(file);
     }
 
 }

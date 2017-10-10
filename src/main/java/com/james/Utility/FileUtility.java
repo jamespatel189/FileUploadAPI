@@ -18,7 +18,7 @@ public class FileUtility {
 
         File f = new File();
         f.setName(file.getOriginalFilename());
-        f.setContent_type(file.getContentType());
+        f.setFileType(file.getContentType());
         f.setSize((int) file.getSize());
         f.setUrl(UPLOAD_DIR + f.getName());
 

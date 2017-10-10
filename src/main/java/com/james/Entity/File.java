@@ -9,8 +9,9 @@ public class File {
     private int id;
     private String name;
     private int size;
-    private String content_type;
+    private String fileType;
     private String url;
+
 
     @Id
     @GeneratedValue
@@ -37,15 +38,6 @@ public class File {
     public void setSize(int size) {
         this.size = size;
     }
-
-    public String getContent_type() {
-        return content_type;
-    }
-
-    public void setContent_type(String content_type) {
-        this.content_type = content_type;
-    }
-
     public String getUrl() {
         return url;
     }
@@ -53,4 +45,13 @@ public class File {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
 }
